@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrícula - Estrelas do Amanhã</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="form-section">
+        <a href="#" class="back-link">← Voltar</a>
+        <h2>Formulário de matrícula</h2>
+        <p class="subtitle">Preencha os dados abaixo para matricular seu filho na escola.</p>
+
+        <form id="matriculaForm">
+            <h3>Informações da criança</h3>
+            <div class="form-group">
+                <label>Nome completo</label>
+                <input type="text" value="Maria Luiza Alves">
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label>Data de nascimento</label>
+                    <input type="text" value="05/11/2019">
+                </div>
+                <div class="form-group">
+                    <label>Sexo</label>
+                    <select>
+                        <option>Feminino</option>
+                        <option>Masculino</option>
+                        <option>Prefiro não responder</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Informações médicas</label>
+                <textarea rows="3">Ela tem alergia a glúten</textarea>
+            </div>
+
+            <h3>Endereço residencial</h3>
+            <div class="row">
+                <div class="form-group" style="flex: 2;">
+                    <label>Rua</label>
+                    <input type="text" value="Rua das Flores" >
+                </div>
+                <div class="form-group">
+                    <label>Número</label>
+                    <input type="text" value="123">
+                </div>
+            </div>
+
+            <h3>Opções de matrícula</h3>
+            <label>Selecione o turno de estudo</label>
+            <div class="selection-grid" id="turno-selector">
+                <div class="card-option active" onclick="setSingleActive(this, 'turno-selector')">
+                    <span class="icon">☁️</span>
+                    <span class="label">Manhã</span>
+                </div>
+                <div class="card-option" onclick="setSingleActive(this, 'turno-selector')">
+                    <span class="icon">☀️</span>
+                    <span class="label">Tarde</span>
+                </div>
+            </div>
+
+            <label style="margin-top: 20px;">Em qual esporte você gostaria de inscrever seu filho?</label>
+            <div class="sports-grid">
+                <div class="sport-card" onclick="toggleActive(this)">
+                    <span class="sport-icon">⚽</span>
+                    <span>Futebol</span>
+                </div>
+                <div class="sport-card" onclick="toggleActive(this)">
+                    <span class="sport-icon">🏀</span>
+                    <span>Basquete</span>
+                </div>
+                <div class="sport-card active" onclick="toggleActive(this)">
+                    <span class="sport-icon">🏊</span>
+                    <span>Natação</span>
+                </div>
+                <div class="sport-card" onclick="toggleActive(this)">
+                    <span class="sport-icon">🧘</span>
+                    <span>Yoga</span>
+                </div>
+                <div class="sport-card" onclick="toggleActive(this)">
+                    <span class="sport-icon">🏐</span>
+                    <span>Volley</span>
+                </div>
+                <div class="sport-card" onclick="toggleActive(this)">
+                    <span class="sport-icon">🥊</span>
+                    <span>Boxing</span>
+                </div>
+            </div>
+
+            <div class="terms-group">
+                <input type="checkbox" id="terms" checked>
+                <label for="terms">Declaro que li e concordo com os <span>Termos e Condições</span> e <span>Política de Privacidade</span>.</label>
+            </div>
+
+            <div class="actions">
+                <button type="button" class="btn-save">Salvar respostas</button>
+                <button type="submit" class="btn-submit">Fazer matrícula</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="sidebar">
+        <div class="logo">★ Estrelas do Amanhã</div>
+        <h1>Porque cada momento de <span>aprendizado</span> conta</h1>
+        <p>Inscreva seu filho em nossa escola e veja-o florescer em um ambiente acolhedor, seguro e estimulante.</p>
+        <div class="illustration">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/teacher-teaching-to-kids-illustration-download-in-svg-png-gif-file-formats--classroom-preschool-children-education-school-pack-illustrations-5381812.png" alt="Educação">
+        </div>
+    </div>
+</div>
+
+<script>
+    // Seleção única (Turno)
+    function setSingleActive(element, parentId) {
+        const parent = document.getElementById(parentId);
+        const options = parent.querySelectorAll('.card-option');
+        options.forEach(opt => opt.classList.remove('active'));
+        element.classList.add('active');
+    }
+
+    // Seleção múltipla (Esportes)
+    function toggleActive(element) {
+        element.classList.toggle('active');
+    }
+
+    document.getElementById('matriculaForm').onsubmit = (e) => {
+        e.preventDefault();
+        alert('Matrícula enviada!');
+    };
+</script>
+
+</body>
+</html>
